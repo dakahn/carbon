@@ -22,9 +22,6 @@
     - 32
   aliases:
     - plus
-    - positive
-    - addition
-    - increase
 - name: app-switcher
   friendly_name: App switcher
   aliases:
