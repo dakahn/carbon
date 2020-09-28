@@ -554,7 +554,7 @@ Define color variables
   $ibm-color__magenta-30: #ffafd2 !default !global;
   $ibm-color__magenta-40: #ff7eb6 !default !global;
   $ibm-color__magenta-50: #ee5396 !default !global;
-  $ibm-color__magenta-60: #d12771 !default !global;
+  $ibm-color__magenta-60: #d02670 !default !global;
   $ibm-color__magenta-70: #9f1853 !default !global;
   $ibm-color__magenta-80: #740937 !default !global;
   $ibm-color__magenta-90: #510224 !default !global;
@@ -595,7 +595,7 @@ Define color variables
   $ibm-color__warm-gray-30: #cac5c4 !default !global;
   $ibm-color__warm-gray-40: #ada8a8 !default !global;
   $ibm-color__warm-gray-50: #8f8b8b !default !global;
-  $ibm-color__warm-gray-60: #736f6f !default !global;
+  $ibm-color__warm-gray-60: #726e6e !default !global;
   $ibm-color__warm-gray-70: #565151 !default !global;
   $ibm-color__warm-gray-80: #3c3838 !default !global;
   $ibm-color__warm-gray-90: #272525 !default !global;
@@ -685,7 +685,7 @@ Define color variables
       30: #ffafd2,
       40: #ff7eb6,
       50: #ee5396,
-      60: #d12771,
+      60: #d02670,
       70: #9f1853,
       80: #740937,
       90: #510224,
@@ -736,7 +736,7 @@ Define color variables
       30: #cac5c4,
       40: #ada8a8,
       50: #8f8b8b,
-      60: #736f6f,
+      60: #726e6e,
       70: #565151,
       80: #3c3838,
       90: #272525,
@@ -748,7 +748,7 @@ Define color variables
       30: #cac5c4,
       40: #ada8a8,
       50: #8f8b8b,
-      60: #736f6f,
+      60: #726e6e,
       70: #565151,
       80: #3c3838,
       90: #272525,
@@ -835,7 +835,7 @@ Define color variables
   $carbon--magenta-30: #ffafd2 !default !global;
   $carbon--magenta-40: #ff7eb6 !default !global;
   $carbon--magenta-50: #ee5396 !default !global;
-  $carbon--magenta-60: #d12771 !default !global;
+  $carbon--magenta-60: #d02670 !default !global;
   $carbon--magenta-70: #9f1853 !default !global;
   $carbon--magenta-80: #740937 !default !global;
   $carbon--magenta-90: #510224 !default !global;
@@ -876,7 +876,7 @@ Define color variables
   $carbon--warm-gray-30: #cac5c4 !default !global;
   $carbon--warm-gray-40: #ada8a8 !default !global;
   $carbon--warm-gray-50: #8f8b8b !default !global;
-  $carbon--warm-gray-60: #736f6f !default !global;
+  $carbon--warm-gray-60: #726e6e !default !global;
   $carbon--warm-gray-70: #565151 !default !global;
   $carbon--warm-gray-80: #3c3838 !default !global;
   $carbon--warm-gray-90: #272525 !default !global;
@@ -940,7 +940,7 @@ Define color variables
   $magenta-30: #ffafd2 !default !global;
   $magenta-40: #ff7eb6 !default !global;
   $magenta-50: #ee5396 !default !global;
-  $magenta-60: #d12771 !default !global;
+  $magenta-60: #d02670 !default !global;
   $magenta-70: #9f1853 !default !global;
   $magenta-80: #740937 !default !global;
   $magenta-90: #510224 !default !global;
@@ -981,7 +981,7 @@ Define color variables
   $warm-gray-30: #cac5c4 !default !global;
   $warm-gray-40: #ada8a8 !default !global;
   $warm-gray-50: #8f8b8b !default !global;
-  $warm-gray-60: #736f6f !default !global;
+  $warm-gray-60: #726e6e !default !global;
   $warm-gray-70: #565151 !default !global;
   $warm-gray-80: #3c3838 !default !global;
   $warm-gray-90: #272525 !default !global;
@@ -1071,7 +1071,7 @@ Define color variables
       30: #ffafd2,
       40: #ff7eb6,
       50: #ee5396,
-      60: #d12771,
+      60: #d02670,
       70: #9f1853,
       80: #740937,
       90: #510224,
@@ -1122,7 +1122,7 @@ Define color variables
       30: #cac5c4,
       40: #ada8a8,
       50: #8f8b8b,
-      60: #736f6f,
+      60: #726e6e,
       70: #565151,
       80: #3c3838,
       90: #272525,
@@ -1134,7 +1134,7 @@ Define color variables
       30: #cac5c4,
       40: #ada8a8,
       50: #8f8b8b,
-      60: #736f6f,
+      60: #726e6e,
       70: #565151,
       80: #3c3838,
       90: #272525,
@@ -7035,9 +7035,6 @@ $text-05: if(
 - **Type**: `{undefined}`
 - **Used by**:
   - [carbon--theme [mixin]](#carbon--theme-mixin)
-  - [date-picker [mixin]](#date-picker-mixin)
-  - [search [mixin]](#search-mixin)
-  - [time-picker [mixin]](#time-picker-mixin)
 
 ### ✅text-error [variable]
 
@@ -13646,6 +13643,13 @@ Accordion styles
     transform: rotate(90deg);
     transition: all $duration--fast-02 motion(standard, productive);
     fill: $ui-05;
+
+    // Windows, Firefox HCM Fix
+    @media screen and (-ms-high-contrast: active),
+      screen and (prefers-contrast) {
+      // `ButtonText` is a CSS2 system color to help improve colors in HCM
+      fill: ButtonText;
+    }
   }
 
   .#{$prefix}--accordion__title {
@@ -13721,6 +13725,13 @@ Accordion styles
       /* rtl:ignore */
       transform: rotate(-90deg);
       fill: $ui-05;
+
+      // Windows, Firefox HCM Fix
+      @media screen and (-ms-high-contrast: active),
+        screen and (prefers-contrast) {
+        // `ButtonText` is a CSS2 system color to help improve colors in HCM
+        fill: ButtonText;
+      }
     }
   }
 
@@ -14113,6 +14124,15 @@ Button styles
   .#{$prefix}--btn.#{$prefix}--btn--icon-only.#{$prefix}--btn--ghost:hover
     .#{$prefix}--btn__icon {
     fill: $icon-01;
+
+    // Windows, Firefox HCM Fix
+    @media screen and (-ms-high-contrast: active),
+      screen and (prefers-contrast) {
+      // `ButtonText` is a CSS2 system color to help improve colors in HCM
+      path {
+        fill: ButtonText;
+      }
+    }
   }
 
   .#{$prefix}--btn--ghost.#{$prefix}--btn--icon-only
@@ -14130,6 +14150,15 @@ Button styles
   .#{$prefix}--btn.#{$prefix}--btn--icon-only.#{$prefix}--btn--ghost[disabled]:hover
     .#{$prefix}--btn__icon {
     fill: $disabled-02;
+
+    // Windows, Firefox HCM Fix
+    @media screen and (-ms-high-contrast: active),
+      screen and (prefers-contrast) {
+      // `GrayText` is a CSS2 system color to help improve colors in HCM
+      path {
+        fill: GrayText;
+      }
+    }
   }
 
   .#{$prefix}--btn--ghost.#{$prefix}--btn--icon-only[disabled] {
@@ -14240,7 +14269,10 @@ Button base styles
   border-radius: $button-border-radius;
   outline: none;
   cursor: pointer;
-  transition: all $duration--fast-01 motion(entrance, productive);
+  transition: background $duration--fast-01 motion(entrance, productive), box-shadow
+      $duration--fast-01 motion(entrance, productive),
+    border-color $duration--fast-01 motion(entrance, productive), outline
+      $duration--fast-01 motion(entrance, productive);
 
   &:disabled,
   &:hover:disabled,
@@ -14484,6 +14516,14 @@ Checkbox styles
   .#{$prefix}--checkbox-label[data-contained-checkbox-state='mixed'].#{$prefix}--checkbox-label__focus::before {
     // Must use box-shadow for appearance of multiple borders with rounded corners.
     box-shadow: 0 0 0 2px $inverse-01, 0 0 0 4px $focus;
+
+    // Windows, Firefox HCM Fix
+    @media screen and (-ms-high-contrast: active),
+      screen and (prefers-contrast) {
+      // `highlightText` is a CSS2 system color to help improve colors in HCM
+      outline: 1px solid highlightText;
+      outline-offset: 2px;
+    }
   }
 
   //----------------------------------------------
@@ -16855,8 +16895,9 @@ Data table expandable styles
     transition: transform $duration--moderate-01 motion(standard, productive);
     fill: $ui-05;
 
-    // Windows HCM fix
-    @media screen and (-ms-high-contrast: active) {
+    // Windows, Firefox HCM Fix
+    @media screen and (-ms-high-contrast: active),
+      screen and (prefers-contrast) {
       // `ButtonText` is a CSS2 system color to help improve colors in HCM
       fill: ButtonText;
     }
@@ -17210,10 +17251,11 @@ Data table sort styles
     fill: $ui-05;
   }
 
-  // Windows HCM fix
+  // Windows, Firefox HCM Fix
   .#{$prefix}--table-sort__icon,
   .#{$prefix}--table-sort__icon-unsorted {
-    @media screen and (-ms-high-contrast: active) {
+    @media screen and (-ms-high-contrast: active),
+      screen and (prefers-contrast) {
       // `ButtonText` is a CSS2 system color to help improve colors in HCM
       fill: ButtonText;
     }
@@ -17353,8 +17395,7 @@ Date picker styles
     }
 
     &::placeholder {
-      color: $text-05;
-      opacity: 1;
+      @include placeholder-colors;
     }
   }
 
@@ -17429,7 +17470,6 @@ Date picker styles
   - [field-01 [variable]](#field-01-variable)
   - [ui-04 [variable]](#ui-04-variable)
   - [disabled-02 [variable]](#disabled-02-variable)
-  - [text-05 [variable]](#text-05-variable)
   - [icon-01 [variable]](#icon-01-variable)
   - [carbon--spacing-09 [variable]](#carbon--spacing-09-variable)
 
@@ -17493,6 +17533,12 @@ Dropdown styles
 
     padding: 0 rem(48px) 0 rem(16px);
     text-align: left;
+
+    // Windows, Firefox HCM Fix
+    @media screen and (-ms-high-contrast: active),
+      screen and (prefers-contrast) {
+      border: 1px solid transparent;
+    }
   }
 
   .#{$prefix}--dropdown--xl {
@@ -18896,6 +18942,13 @@ List box styles
 
   .#{$prefix}--list-box--disabled .#{$prefix}--list-box__menu-icon > svg {
     fill: $disabled-02;
+
+    // Windows, Firefox HCM Fix
+    @media screen and (-ms-high-contrast: active),
+      screen and (prefers-contrast) {
+      // `GrayText` is a CSS2 system color to help improve colors in HCM
+      fill: GrayText;
+    }
   }
 
   .#{$prefix}--list-box--disabled,
@@ -19080,6 +19133,13 @@ List box styles
   .#{$prefix}--list-box__menu-icon > svg {
     height: 100%;
     fill: $icon-01;
+
+    // Windows, Firefox HCM Fix
+    @media screen and (-ms-high-contrast: active),
+      screen and (prefers-contrast) {
+      // `ButtonText` is a CSS2 system color to help improve colors in HCM
+      fill: ButtonText;
+    }
   }
 
   .#{$prefix}--list-box__menu-icon--open {
@@ -19109,6 +19169,13 @@ List box styles
 
   .#{$prefix}--list-box__selection > svg {
     fill: $icon-02;
+
+    // Windows, Firefox HCM Fix
+    @media screen and (-ms-high-contrast: active),
+      screen and (prefers-contrast) {
+      // `ButtonText` is a CSS2 system color to help improve colors in HCM
+      fill: ButtonText;
+    }
   }
 
   .#{$prefix}--list-box--disabled .#{$prefix}--list-box__selection:focus {
@@ -19148,6 +19215,13 @@ List box styles
       background-color: $hover-secondary;
       border-radius: 50%;
     }
+
+    // Windows, Firefox HCM Fix
+    @media screen and (-ms-high-contrast: active),
+      screen and (prefers-contrast) {
+      // `ButtonText` is a CSS2 system color to help improve colors in HCM
+      fill: ButtonText;
+    }
   }
 
   .#{$prefix}--list-box--disabled
@@ -19157,6 +19231,13 @@ List box styles
 
     &:hover {
       background-color: initial;
+    }
+
+    // Windows, Firefox HCM Fix
+    @media screen and (-ms-high-contrast: active),
+      screen and (prefers-contrast) {
+      // `GrayText` is a CSS2 system color to help improve colors in HCM
+      fill: GrayText;
     }
   }
 
@@ -20018,6 +20099,13 @@ Modal styles
     width: rem(20px);
     height: rem(20px);
     fill: $icon-01;
+
+    // Windows, Firefox HCM Fix
+    @media screen and (-ms-high-contrast: active),
+      screen and (prefers-contrast) {
+      // `ButtonText` is a CSS2 system color to help improve colors in HCM
+      fill: ButtonText;
+    }
   }
 
   .#{$prefix}--body--with-modal-open {
@@ -21105,8 +21193,9 @@ Overflow menu styles
     height: rem(16px);
     fill: $icon-01;
 
-    // Windows HCM fix
-    @media screen and (-ms-high-contrast: active) {
+    // Windows, Firefox HCM Fix
+    @media screen and (-ms-high-contrast: active),
+      screen and (prefers-contrast) {
       // `ButtonText` is a CSS2 system color to help improve colors in HCM
       fill: ButtonText;
     }
@@ -21500,6 +21589,13 @@ Pagination styles
     transition: outline $duration--fast-02 motion(standard, productive), background-color
         $duration--fast-02 motion(standard, productive);
     fill: $ui-05;
+
+    // Windows, Firefox HCM Fix
+    @media screen and (-ms-high-contrast: active),
+      screen and (prefers-contrast) {
+      // `ButtonText` is a CSS2 system color to help improve colors in HCM
+      border: 1px solid transparent;
+    }
   }
 
   .#{$prefix}--pagination__button:focus,
@@ -22373,7 +22469,13 @@ Radio button styles
       // Allow the selected button to be seen in Windows HCM for IE/Edge
       @media screen and (-ms-high-contrast: active) {
         // Utilize a system color variable to accomodate any user HCM theme
-        background-color: windowText;
+        background-color: WindowText;
+      }
+
+      // Firefox only HCM solution
+      @media screen and (prefers-contrast) {
+        // Utilize a system color variable to accomodate any user HCM theme
+        border: 2px solid WindowText;
       }
     }
   }
@@ -22512,8 +22614,7 @@ Search styles
     }
 
     &::placeholder {
-      color: $text-05;
-      font-weight: 400;
+      @include placeholder-colors;
     }
 
     &::-ms-clear {
@@ -22529,7 +22630,6 @@ Search styles
 
     &::placeholder {
       color: $disabled;
-      font-weight: 400;
     }
   }
 
@@ -22580,8 +22680,9 @@ Search styles
     pointer-events: none;
     fill: $icon-02;
 
-    // Windows HCM fix
-    @media screen and (-ms-high-contrast: active) {
+    // Windows, Firefox HCM Fix
+    @media screen and (-ms-high-contrast: active),
+      screen and (prefers-contrast) {
       // `ButtonText` is a CSS2 system color to help improve colors in HCM
       fill: ButtonText;
     }
@@ -22629,6 +22730,12 @@ Search styles
 
   .#{$prefix}--search-close svg {
     fill: inherit;
+
+    // Firefox HCM Fix
+    @media screen and (prefers-contrast) {
+      // `ButtonText` is a CSS2 system color to help improve colors in HCM
+      fill: ButtonText;
+    }
   }
 
   .#{$prefix}--search-close,
@@ -22728,7 +22835,6 @@ Search styles
   - [text-01 [variable]](#text-01-variable)
   - [field-01 [variable]](#field-01-variable)
   - [ui-04 [variable]](#ui-04-variable)
-  - [text-05 [variable]](#text-05-variable)
   - [field-02 [variable]](#field-02-variable)
   - [spacing-07 [variable]](#spacing-07-variable)
   - [spacing-08 [variable]](#spacing-08-variable)
@@ -22869,6 +22975,15 @@ Select styles
     height: 100%;
     pointer-events: none;
     fill: $ui-05;
+
+    // Windows, Firefox HCM Fix
+    @media screen and (-ms-high-contrast: active),
+      screen and (prefers-contrast) {
+      // `ButtonText` is a CSS2 system color to help improve colors in HCM
+      path {
+        fill: ButtonText;
+      }
+    }
   }
 
   .#{$prefix}--select-input__wrapper[data-invalid]
@@ -23041,6 +23156,13 @@ Slider styles
     background: $ui-03;
     transform: translate(0%, -50%);
     cursor: pointer;
+
+    // Windows, Firefox HCM Fix
+    @media screen and (-ms-high-contrast: active),
+      screen and (prefers-contrast) {
+      // `ButtonText` is a CSS2 system color to help improve colors in HCM
+      border: 1px solid transparent;
+    }
   }
 
   .#{$prefix}--slider__track:before {
@@ -23064,6 +23186,13 @@ Slider styles
     transform-origin: left;
     transition: background $duration--fast-02 motion(standard, productive);
     pointer-events: none;
+
+    // Windows, Firefox HCM Fix
+    @media screen and (-ms-high-contrast: active),
+      screen and (prefers-contrast) {
+      // `ButtonText` is a CSS2 system color to help improve colors in HCM
+      border: 1px solid transparent;
+    }
   }
 
   .#{$prefix}--slider__thumb {
@@ -23097,6 +23226,13 @@ Slider styles
     &:active {
       box-shadow: inset 0 0 0 2px $interactive-04;
       transform: translate(-50%, -50%) scale(1.4286);
+    }
+
+    // Windows, Firefox HCM Fix
+    @media screen and (-ms-high-contrast: active),
+      screen and (prefers-contrast) {
+      // `ButtonText` is a CSS2 system color to help improve colors in HCM
+      outline: 1px solid ButtonText;
     }
   }
 
@@ -24643,7 +24779,7 @@ Time picker styles
         $duration--fast-01 motion(standard, productive);
 
     &::placeholder {
-      color: $text-05;
+      @include placeholder-colors;
     }
   }
 
@@ -24671,7 +24807,6 @@ Time picker styles
 - **Requires**:
   - [prefix [variable]](#prefix-variable)
   - [carbon--spacing-01 [variable]](#carbon--spacing-01-variable)
-  - [text-05 [variable]](#text-05-variable)
   - [field-02 [variable]](#field-02-variable)
   - [hover-ui [variable]](#hover-ui-variable)
   - [disabled-02 [variable]](#disabled-02-variable)
