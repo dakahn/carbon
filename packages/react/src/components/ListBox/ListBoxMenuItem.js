@@ -17,18 +17,21 @@ const { prefix } = settings;
  * name, alongside any classes for any corresponding states, for a generic list
  * box menu item.
  */
-const ListBoxMenuItem = ({ children, isActive, isHighlighted, ...rest }) => {
+const ListBoxMenuItem = React.forwardRef(function (
+  { children, isActive, isHighlighted, ...rest },
+  ref
+) {
   const className = cx({
     [`${prefix}--list-box__menu-item`]: true,
     [`${prefix}--list-box__menu-item--active`]: isActive,
     [`${prefix}--list-box__menu-item--highlighted`]: isHighlighted,
   });
   return (
-    <div className={className} {...rest}>
+    <div ref={ref} className={className} {...rest}>
       <div className={`${prefix}--list-box__menu-item__option`}>{children}</div>
     </div>
   );
-};
+});
 
 ListBoxMenuItem.propTypes = {
   /**

@@ -19,16 +19,20 @@ export const translationIds = {};
  * elements inside of a field. It also provides a11y-related attributes like
  * `role` to make sure a user can focus the given field.
  */
-function ListBoxField({ children, disabled, tabIndex, ...rest }) {
+const ListBoxField = React.forwardRef(function ListBoxField(
+  { children, disabled, tabIndex, ...rest },
+  ref
+) {
   return (
     <div
+      ref={ref}
       className={`${prefix}--list-box__field`}
       tabIndex={(!disabled && tabIndex) || -1}
       {...rest}>
       {children}
     </div>
   );
-}
+});
 
 ListBoxField.propTypes = {
   /**
